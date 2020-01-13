@@ -1,6 +1,5 @@
 class UI {
     constructor() {
-
       this.budgetFeedback = document.querySelector(".budget-feedback");
       this.expenseFeedback = document.querySelector(".expense-feedback");
       this.budgetForm = document.getElementById("budget-form");
@@ -16,8 +15,38 @@ class UI {
       this.itemList = [];
       this.itemID = 0;
     }
+    // submit budget method
+    submitBudgetForm() {
+      const value = this.budgetInput.value;
+      if(value==='' || value < 0){
+        this.budgetFeedback.classList.add("showItem");
+        this.budgetFeedback.innerHTML = `<p>value cannot be empty or
+        negative</p>`;
+        const self = this;
+        // console.log(this);
+
+        setTimeout(function() { 
+        self.this.budgetFeedback.classList.remove("showItem");
+        }, 4000);
+      } else {
+        this.budgetAmount.textContent = value;
+        this.budgetInput.value = "";
+        this.showBalance();
+      }
+   }
+  //  show balance
+  showBalance(){
+    cont expense = this.totalExpense();
+    const total = parseInt(this.budgetAmount.textContent) - expense;
   }
-function evenListeners (){
+  // total expense
+  totalExpense(){
+    let total = 400;
+    return total;
+  }  
+}
+  
+function evenListeners () {
   const budgetForm = document.getElementById('budget-form');
   const expenseForm = document.getElementById('expense-form');
   const expenseList = document.getElementById('expense-list');
