@@ -26,7 +26,7 @@ class UI {
         // console.log(this);
 
         setTimeout(function() { 
-        self.this.budgetFeedback.classList.remove("showItem");
+          self.this.budgetFeedback.classList.remove("showItem");
         }, 4000);
       } else {
         this.budgetAmount.textContent = value;
@@ -36,8 +36,13 @@ class UI {
    }
   //  show balance
   showBalance(){
-    cont expense = this.totalExpense();
+    const expense = this.totalExpense();
     const total = parseInt(this.budgetAmount.textContent) - expense;
+    this.balanceAmount.textContent = total;
+    if(total < 0){
+      this.balance.classList.remove('showGreen', 'showBlack');
+      this.balance.classList.add('showRed');
+    }
   }
   // total expense
   totalExpense(){
