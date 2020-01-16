@@ -40,8 +40,12 @@ class UI {
     const total = parseInt(this.budgetAmount.textContent) - expense;
     this.balanceAmount.textContent = total;
     if(total < 0){
-      this.balance.classList.remove('showGreen', 'showBlack');
-      this.balance.classList.add('showRed');
+      this.balance.classList.remove("showGreen", "showBlack");
+      this.balance.classList.add("showRed");
+    }  
+    else if(total === 0){
+      this.balance.classList.remove("showRed", "showGreen");
+      this.balance.classList.add("showBlack");
     }
   }
   // total expense
@@ -71,6 +75,6 @@ function evenListeners () {
   expenseList.addEventListener("click", function() {});   
   }
   
-  document.addEventListener("DOMContentLoaded", function() {
-    eventListeners();
+  document.addEventListener("DOMContentLoaded", function(){
+    eventListeners()
   });
